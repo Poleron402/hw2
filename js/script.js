@@ -30,24 +30,20 @@ const gradeQuiz = ()=>{
     // FIRST QUESTION VALIDATION
     let q1Response = document.getElementById("q1").value.toLowerCase()
     // console.log(q1Response)
-    if (q1Response === "sacramento"){
-        answerFeedback(1, true)
-    }else{
-        answerFeedback(1, false)
-    }
+    q1Response === "sacramento"?answerFeedback(1, true):answerFeedback(1, false)
+    
     // SECOND QUESTION VALIDATION
     let q2Response = document.getElementById("q2").value;
-    if (q2Response === "mo"){
-        answerFeedback(2, true)
-    }else{
-        answerFeedback(2, false)
-    }
+    q2Response === "mo"?answerFeedback(2, true) : answerFeedback(2, false)
     // THIRD QUESTION VALIDATION
     if(document.getElementById("Jefferson").checked && document.getElementById("Roosevelt").checked && !document.getElementById("Jackson").checked && !document.getElementById("Franklin").checked){
         answerFeedback(3, true)
     }else{
         answerFeedback(3, false)
     }
+    let q4Response = document.querySelector("input[name=q4]:checked").value
+    q4Response == "Rhode Island"? answerFeedback(4, true) : answerFeedback(4, false)
+
     document.getElementById("totalScore").textContent = `Total score: ${score} pts`
     
 }
