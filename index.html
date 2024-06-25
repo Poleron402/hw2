@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.2/underscore-umd-min.js"> </script> 
 </head>
-<body class = "text-center">
-    <h1 class="p-5 bg-dark text-light"> US Geography Quiz </h1>
+<body class = "text-center bg-dark text-light">
+    <h1 class="p-4 bg-light text-dark "> US Geography Quiz </h1>
     <!--We add a span to h3 to add a checkmark next to a question indicating whether its correct or not-->
     <!-- Q1 -->
     <h3> <span id="markImg1"></span>1. What is the capital of California?</h3>
@@ -41,20 +41,30 @@
     <div id="q4Feedback"></div>
     <!-- Q5 -->
     <h3><span id="markImg5"></span>5. What is the top-3 largest US States (by Area)?</h3>
-    <input type="checkbox" id="ATC">  <label for="ATC"> Alaska, Texas, California </label><br>
+    <div id="q5Choices"></div>
+    <!-- <input type="checkbox" id="ATC">  <label for="ATC"> Alaska, Texas, California </label><br>
     <input type="checkbox" id="NTW"> <label for="NTW"> New York, Texas, Washington </label><br>
-    <input type="checkbox" id="CWT"> <label for="CNC"> California, Wyoming, Texas</label><br>
+    <input type="checkbox" id="CWT"> <label for="CNC"> California, Wyoming, Texas</label><br> -->
     <br>
-    <h3><span id="markImg6"></span>6. Which one of those states is in the West Coast?</h3>
+    <!-- Q6 -->
+    <h3><span id="markImg6"></span>6. Which one of those states is on the West Coast?</h3>
     <input type="checkbox" id="Oregon">  <label for="Oregon"> Oregon </label><br>
     <input type="checkbox" id="Colorado"> <label for="Colorado"> Colorado </label><br>
     <input type="checkbox" id="Florida"> <label for="Florida"> Florida </label><br>
     <br>
+    <!-- Q7 -->
     <h3><span id="markImg6"></span>7. Which one of those states is NOT on the East Coast?</h3>
     <input type="checkbox" id="WestV">  <label for="WestV"> West Virginia </label><br>
     <input type="checkbox" id="Colorado"> <label for="Colorado"> Georgia </label><br>
     <input type="checkbox" id="Florida"> <label for="Florida"> Florida </label><br>
     <input type="checkbox" id="NorCar"> <label for="NorCar"> North Carolina </label><br>
+    <br>
+    <!-- Q8 -->
+    <h3><span id="markImg6"></span>8. Which river forms part of the border between the United States and Mexico?</h3>
+    <input type="checkbox" id="WestV">  <label for="WestV"> Colorado River </label><br>
+    <input type="checkbox" id="Colorado"> <label for="Colorado"> Mississippi River </label><br>
+    <input type="checkbox" id="Florida"> <label for="Florida"> Rio Grande </label><br>
+    <input type="checkbox" id="NorCar"> <label for="NorCar"> Arkansas River </label><br>
     <br>
     <div id="q5Feedback"></div>
     <h3 id="validationFeedback" class="bg-danger text-white m-3"></h3>
