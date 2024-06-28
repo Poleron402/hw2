@@ -11,7 +11,7 @@ const isFormValid= ()=>{
 }
 
 
-const displayQ4Thru8Choices = ()=>{
+const displayQ4And5Choices = ()=>{
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"]
     q4ChoicesArray = _.shuffle(q4ChoicesArray)
 
@@ -29,18 +29,46 @@ const displayQ4Thru8Choices = ()=>{
         `
     });
 }
-displayQ4Thru8Choices()
+displayQ4And5Choices()
 const answerFeedback = (index, correct) =>{
     if (correct){
         document.getElementById(`q${index}Feedback`).textContent = "Correct!"
         document.getElementById(`q${index}Feedback`).className = " bg-success text-white p-2 m-3 fs-4"
         document.getElementById(`markImg${index}`).innerHTML = "<img src='/img/checkmark.png' alt='checkmark'>"
-        score += 20
+        score += 10
     }else{
         document.getElementById(`q${index}Feedback`).textContent = "Incorrect!"
-        document.getElementById(`q${index}Feedback`).className = " bg-warning text-white p-2 m-3 fs-4"
+        document.getElementById(`q${index}Feedback`).className = " bg-warning text-white fs-4"
         document.getElementById(`markImg${index}`).innerHTML = "<img src='/img/xmark.png' alt='xmark'>"
     }
+}
+const q9Grading = () =>{
+    
+    const color = 'brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%)'
+    let cali = document.getElementById('caliImg')
+    console.log(cali)
+    let florida = document.getElementById('floridaImg')
+    let oregon = document.getElementById('oregonImg')
+    florida.addEventListener("click", function(){
+        cali.style.filter = 'invert(1)'
+        oregon.style.filter = 'invert(1)'
+        florida.style.filter = color
+    })
+    cali.addEventListener("click", function(){
+        oregon.style.filter = 'invert(1)'
+        florida.style.filter = 'invert(1)'
+        cali.style.filter = color
+    })
+    oregon.addEventListener("click", function(){
+        cali.style.filter = 'invert(1)'
+        florida.style.filter = 'invert(1)'
+        oregon.style.filter = color
+    })
+}
+q9Grading()
+//method to change the color upon click
+const changeColor = (idClicked)=>{
+    idClicked.style.filter = 'brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%)'
 }
 const gradeQuiz = ()=>{
     score = 0
@@ -62,13 +90,33 @@ const gradeQuiz = ()=>{
     && !document.getElementById("Jackson").checked 
     && !document.getElementById("Franklin").checked ? answerFeedback(3, true) : answerFeedback(3, false)
     // FOURTH QUESTION VALIDATION
-    let q4Response = document.querySelector("input[name=q4]:checked").value
+    let q4Response = document.querySelector("input[name=q4]:checked")
+    if(q4Response){
+        q4Response = q4Response.value
+    } else{
+        q4Response = null
+    }
     q4Response == "Rhode Island"? answerFeedback(4, true) : answerFeedback(4, false)
+    
     //FIFTH QUESTION VALIDATION
     document.getElementById("ATC").checked && !document.getElementById("NTW").checked && !document.getElementById("CWT").checked?answerFeedback(5, true):answerFeedback(5, false)
+    //SIXTH QUESTION VALIDATION
+    document.getElementById("q6").value == "Oregon"? answerFeedback(6, true) : answerFeedback(6, false)
+    //SEVENTH QUESTION VALIDATION
+    document.getElementById("q7").value == "WestV"? answerFeedback(7, true) : answerFeedback(7, false)
+    //EIGHTH QUESTION VALIDATION
+    document.getElementById("RGRiver").checked && !document.getElementById("MississippiRiver").checked && !document.getElementById("ColoradoRiver").checked && !document.getElementById("ArkansasRiver").checked ? answerFeedback(8, true) : answerFeedback(8, false)
+    //NINETH QUESTION VALIDATION
+
+    //TENTH QUESTION VALIDATION
+    document.getElementById("Denali").checked && !document.getElementById("MWhitney").checked && !document.getElementById("MForaker").checked? answerFeedback(10, true):answerFeedback(10, false)
     document.getElementById("totalScore").textContent = `Total score: ${score} pts`
+    if(score>=80){
+        document.getElementById("congrats").innerHTML = "<h2>🎉CONGRATS!!! You scored high!🎉</h2>"
+    }
     document.getElementById("totalAttempts").textContent = `Total Attempts: ${++attempts}`
     localStorage.setItem("totalAttempts", attempts)
+
 }
 
 document.querySelector("button").addEventListener("click", gradeQuiz)

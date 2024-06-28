@@ -1,0 +1,54 @@
+
+#mdiv{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+h3{
+    background-color: rgba(0, 0, 0, 0.523);
+    padding: 12px;
+    width: 40%;
+}
+input[type="text"]{
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+    border: 4px solid transparent;
+    outline: none;
+    background: linear-gradient(to right, rgb(85, 85, 215), darkorchid) border-box;
+    color: azure;
+    margin: 10px;
+    width: 250px;
+}
+
+input:focus{
+   box-sizing: border-box;
+   background-color: rgb(112, 112, 144);
+   background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0)) padding-box, linear-gradient(to right, rgb(85, 85, 215), darkorchid) border-box;
+   border-radius: 15px;
+   border: 3px solid transparent;
+   color: azure;
+   
+}
+select, option{
+    padding: 13px;
+    background: linear-gradient(to right, rgb(85, 85, 215), darkorchid) border-box;
+    width: 250px;
+    border-radius: 10px;
+    outline: none;
+    color: azure;
+    cursor: pointer;
+}
+
+label, input[type="checkbox"], input[type="radio"]{
+    font-size: 25px;
+    cursor: pointer;
+}
+.myimg{
+    filter:invert(1);
+    cursor: pointer;
+    margin: 20px;
+}
+.myimg:hover{
+    filter: brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%);
+}
