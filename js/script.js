@@ -1,5 +1,6 @@
 let score = 0
 let attempts = localStorage.getItem("totalAttempts")
+const color = 'brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%)'
 
 const isFormValid= ()=>{
     let isValid = true
@@ -44,7 +45,6 @@ const answerFeedback = (index, correct) =>{
 }
 const q9Grading = () =>{
     
-    const color = 'brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%)'
     let cali = document.getElementById('caliImg')
     console.log(cali)
     let florida = document.getElementById('floridaImg')
@@ -107,7 +107,7 @@ const gradeQuiz = ()=>{
     //EIGHTH QUESTION VALIDATION
     document.getElementById("RGRiver").checked && !document.getElementById("MississippiRiver").checked && !document.getElementById("ColoradoRiver").checked && !document.getElementById("ArkansasRiver").checked ? answerFeedback(8, true) : answerFeedback(8, false)
     //NINETH QUESTION VALIDATION
-
+    document.getElementById("floridaImg").style.filter == color? answerFeedback(9, true):answerFeedback(9, false)
     //TENTH QUESTION VALIDATION
     document.getElementById("Denali").checked && !document.getElementById("MWhitney").checked && !document.getElementById("MForaker").checked? answerFeedback(10, true):answerFeedback(10, false)
     document.getElementById("totalScore").textContent = `Total score: ${score} pts`
