@@ -2,7 +2,7 @@ let score = 0
 let questionsAnswered = 0
 let attempts = localStorage.getItem("totalAttempts")
 const color = 'brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%)'
-
+document.getElementById("totalAttempts").textContent = `Total Attempts: ${localStorage.getItem("totalAttempts")}`
 const isFormValid= ()=>{
     let isValid = true
     if(document.getElementById("q1").value == ""){
