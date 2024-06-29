@@ -13,7 +13,7 @@ const isFormValid= ()=>{
     return isValid
 }
 
-const displayQ4And5Choices = ()=>{
+const displayQ4510Choices = ()=>{
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"]
     q4ChoicesArray = _.shuffle(q4ChoicesArray)
 
@@ -30,8 +30,14 @@ const displayQ4And5Choices = ()=>{
         <input type="checkbox" id="${item.flag}">  <label for="${item.flag}"> ${item.choice} </label><br>
         `
     });
+    let q10ChoicesArr = [{'choice':'Mount Whitney, California', 'flag': 'MW'}, {'choice': 'Denali, Alaska', 'flag': 'DEN'}, {'choice': 'Mount Foraker, Alaska', 'flag': 'MF'}]
+    q10ChoicesArr = _.shuffle(q10ChoicesArr)
+    q10ChoicesArr.forEach((item)=>{
+        document.getElementById('q10Choices').innerHTML += `<input type="radio" name="q4" id="${item.flag}" value="${item.flag}"> <label for="${item.flag}"> ${item.choice}</label><br>`
+    });
+     
 }
-displayQ4And5Choices()
+displayQ4510Choices()
 //I combined the example two methods into one so it is easier to rememebr
 const answerFeedback = (index, correct) =>{
     if (correct){
@@ -102,7 +108,8 @@ const gradeQuiz = ()=>{
     //FIFTH QUESTION VALIDATION
     document.getElementById("ATC").checked && !document.getElementById("NTW").checked && !document.getElementById("CWT").checked?answerFeedback(5, true):answerFeedback(5, false)
     //SIXTH QUESTION VALIDATION
-    document.getElementById("q6").value == "Oregon"? answerFeedback(6, true) : answerFeedback(6, false)
+    q6 = document.getElementById("q6").value.toLowerCase()
+    q6 == "oregon" || q6 == 'california' || q6 == 'washington' ? answerFeedback(6, true) : answerFeedback(6, false)
     //SEVENTH QUESTION VALIDATION
     document.getElementById("q7").value == "WestV"? answerFeedback(7, true) : answerFeedback(7, false)
     //EIGHTH QUESTION VALIDATION
@@ -110,7 +117,7 @@ const gradeQuiz = ()=>{
     //NINETH QUESTION VALIDATION
     document.getElementById("floridaImg").style.filter == color? answerFeedback(9, true):answerFeedback(9, false)
     //TENTH QUESTION VALIDATION
-    document.getElementById("Denali").checked && !document.getElementById("MWhitney").checked && !document.getElementById("MForaker").checked? answerFeedback(10, true):answerFeedback(10, false)
+    document.getElementById("DEN").checked? answerFeedback(10, true):answerFeedback(10, false)
     document.getElementById("totalScore").textContent = `Total score: ${score} pts`
     if(score>=80){
         document.getElementById("congrats").innerHTML = "<h2>🎉CONGRATS!!! You scored high!🎉</h2>"
