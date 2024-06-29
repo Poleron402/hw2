@@ -1,4 +1,5 @@
 let score = 0
+let questionsAnswered = 0
 let attempts = localStorage.getItem("totalAttempts")
 const color = 'brightness(0) saturate(100%) invert(33%) sepia(100%) saturate(7500%) hue-rotate(265deg) brightness(95%) contrast(110%)'
 
@@ -8,16 +9,16 @@ const isFormValid= ()=>{
         isValid = false
         document.getElementById("validationFeedback").textContent = "Question 1 was not answered"
     }
+    
     return isValid
 }
-
 
 const displayQ4And5Choices = ()=>{
     let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"]
     q4ChoicesArray = _.shuffle(q4ChoicesArray)
 
     for (let i=0; i<q4ChoicesArray.length; i++){
-        document.querySelector("#q4Choices").innerHTML += ` <input type="radio" name="q4" id= "${q4ChoicesArray[i]}" value="${q4ChoicesArray[i]}"> <label for="${q4ChoicesArray[i]}"> ${q4ChoicesArray[i]}</label>`
+        document.querySelector("#q4Choices").innerHTML += ` <input type="radio" name="q4" id= "${q4ChoicesArray[i]}" value="${q4ChoicesArray[i]}"> <label for="${q4ChoicesArray[i]}"> ${q4ChoicesArray[i]}</label><br>`
     }
 
     let q5ChoicesArr = [{"choice": "Alaska, Texas, California", "flag" : "ATC"},
@@ -31,6 +32,7 @@ const displayQ4And5Choices = ()=>{
     });
 }
 displayQ4And5Choices()
+//I combined the example two methods into one so it is easier to rememebr
 const answerFeedback = (index, correct) =>{
     if (correct){
         document.getElementById(`q${index}Feedback`).textContent = "Correct!"
@@ -39,14 +41,13 @@ const answerFeedback = (index, correct) =>{
         score += 10
     }else{
         document.getElementById(`q${index}Feedback`).textContent = "Incorrect!"
-        document.getElementById(`q${index}Feedback`).className = " bg-warning text-white fs-4"
+        document.getElementById(`q${index}Feedback`).className = " bg-warning text-white  p-2 m-3 fs-4"
         document.getElementById(`markImg${index}`).innerHTML = "<img src='/img/xmark.png' alt='xmark'>"
     }
 }
+//separade grading method for question 9
 const q9Grading = () =>{
-    
     let cali = document.getElementById('caliImg')
-    console.log(cali)
     let florida = document.getElementById('floridaImg')
     let oregon = document.getElementById('oregonImg')
     florida.addEventListener("click", function(){
